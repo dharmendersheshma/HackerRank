@@ -1,0 +1,36 @@
+string isBalanced(string s) {
+    string a = "YES";
+    string b = "NO";
+
+    stack <char> stk;
+    
+    int n = s.length();
+
+    cout<<n;
+        for(int j = 0; j < n; j++){
+            if(s[j] == '{' || s[j] == '(' || s[j] == '['){
+                stk.push(s[j]);
+            }else{
+                 if(stk.empty()) {
+                    return b;
+                }
+                if(stk.top() == '{' && s[j] != '}') {
+                    return b;
+                }
+                else if(stk.top() == '(' && s[j] != ')') {
+                    return b;
+                }
+                else if(stk.top() == '[' && s[j] != ']') {
+                    return b;
+                }
+                else{
+                    stk.pop();
+                }
+            }
+        }
+        if(stk.empty()){
+            return a;
+        }else{
+            return b;
+        }
+}

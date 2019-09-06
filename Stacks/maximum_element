@@ -1,0 +1,52 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int N = 0;
+    int type = 0;
+    long max = 0;
+    long number = 0;
+    long top = -1;
+    long stack[1000000];
+    long iterator = 0;
+
+    cin>>N;
+
+    while(N>0){
+        cin>>type;
+        switch(type){
+            case 1: 
+                cin>>number;
+                if(number > max){
+                    max = number;
+                }
+                top++;
+                stack[top] = number;
+                break;
+
+            case 2: 
+                if(stack[top]!=max){
+                    top--;
+                }
+                else{
+                    top--;
+                    max = 0;
+                    iterator = top;
+                    while(iterator > -1){
+                        if(stack[iterator] > max){
+                            max = stack[iterator];
+                        }iterator--;
+                    }
+                }
+                break;
+
+            case 3: 
+                cout<<max<<endl;
+                break;
+        }
+        N--;
+    }
+    return 0;
+}
+
